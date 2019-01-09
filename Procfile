@@ -1,1 +1,1 @@
-web: gunicorn vis_webhook:app --log-file=-
+web: gunicorn app:app --log-file=-

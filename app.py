@@ -20,8 +20,11 @@ def setLMGTFY(string, index):
 
     return LMGTFY;
 
+@app.route('/', methods=['GET'])
+def hello():
+    return 'Hello World'
 
-@app.route('/', methods=['POST'])
+@app.route('/api', methods=['POST'])
 def vis_webhook():
     incoming_json = request.get_json()
 

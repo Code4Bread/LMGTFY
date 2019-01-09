@@ -39,15 +39,18 @@ def vis_webhook():
     chat_id = incoming_json["message"]["chat"]["id"]
     chat_message = incoming_json["message"]["text"]
 
-    isHowQuestion = chat_message.find('how')
+    pattern = re.compile(r"\bhow\b")
 
-    if isHowQuestion >= 0:
-        payload["text"] = setLMGTFY(chat_message, isHowQuestion)
-        payload["chat_id"] = chat_id
-        requests.post(TELEGRAM_URL, payload)
-        return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
-    else:
-        return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+    for m in pattern.finditer(chat_message):
+        if type(m.start()) == int:
+            isHowQuestion = m.start()
+            payload["text"] = setLMGTFY(chat_message, isHowQuestion)
+            payload["chat_id"] = chat_id
+            requests.post(TELEGRAM_URL, payload)
+            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+            break
+        else:
+            return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 if __name__ == '__main__':
     app.run()

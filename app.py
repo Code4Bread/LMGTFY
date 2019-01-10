@@ -39,7 +39,7 @@ def vis_webhook():
     chat_id = incoming_json["message"]["chat"]["id"]
     chat_message = incoming_json["message"]["text"]
 
-    pattern = re.compile(r"\bhow\b", re.IGNORECASE)
+    pattern = re.compile(r"\bhow\b")
 
     for m in pattern.finditer(chat_message):
         if type(m.start()) == int:

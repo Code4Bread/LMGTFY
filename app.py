@@ -16,7 +16,7 @@ def setLMGTFY(string, index):
     else:
         new_string = substring
 
-    LMGTFY = 'http://lmgtfy.com/?q=' + ('+').join(new_string.split(' '))
+    LMGTFY = 'https://lmgtfy.com/?q=' + ('+').join(new_string.split(' '))
 
     return LMGTFY;
 

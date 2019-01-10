@@ -28,7 +28,7 @@ def hello():
 def vis_webhook():
     incoming_json = request.get_json()
 
-    TELEGRAM_URL = 'https://api.telegram.org/bot647751837:AAFjJTwsxEmsEJyJFDsUFEA3fjGJ0Cknvwc/sendMessage'
+    TELEGRAM_URL = 'https://api.telegram.org/{apikey}/sendMessage'
 
     payload = {
         "chat_id": "407352782",

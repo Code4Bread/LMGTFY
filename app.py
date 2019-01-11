@@ -26,14 +26,14 @@ def setLMGTFY(string, index):
 
 @app.route('/', methods=['GET'])
 def hello():
-    return telegram_api_key
+    return 'Hello World'
 
 @app.route('/api', methods=['POST'])
 def vis_webhook():
     incoming_json = request.get_json()
 
 
-    TELEGRAM_URL = 'https://api.telegram.org/{apikey}/sendMessage'
+    TELEGRAM_URL = 'https://api.telegram.org/' + telegram_api_key +'/sendMessage'
 
     payload = {
         "chat_id": "407352782",

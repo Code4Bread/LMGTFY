@@ -3,8 +3,12 @@ from flask import request
 import re
 import requests
 import json
+import os
 
 app = Flask(__name__)
+
+
+telegram_api_key = os.environ['telegram_bot_api']
 
 def setLMGTFY(string, index):
     substring = string[index:]
@@ -22,11 +26,12 @@ def setLMGTFY(string, index):
 
 @app.route('/', methods=['GET'])
 def hello():
-    return 'Hello World'
+    return telegram_api_key
 
 @app.route('/api', methods=['POST'])
 def vis_webhook():
     incoming_json = request.get_json()
+
 
     TELEGRAM_URL = 'https://api.telegram.org/{apikey}/sendMessage'
 
